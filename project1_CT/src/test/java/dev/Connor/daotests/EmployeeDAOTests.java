@@ -24,17 +24,17 @@ public class EmployeeDAOTests {
     @Order(2)
     void get_employee_id_test(){
         Employee retreivedEmployee = employeeDAO.getEmployeeID(1);
-        Assertions.assertEquals("Test", retreivedEmployee.getEmployeeId());
+        Assertions.assertEquals("Test", retreivedEmployee.getName());
     }
 
     @Test
     @Order(3)
     void update_employee_test(){
         Employee employee = employeeDAO.getEmployeeID(1);
-        Employee employeev2 = new Employee(employee.getEmployeeId(), employee.getName(), employee.getUsername(), employee.getPassword(), employee.getManager());
+        Employee employeev2 = new Employee(employee.getEmployeeId(), "Test2", employee.getUsername(), employee.getPassword(), employee.getManager());
         employeeDAO.updatedEmployee(employeev2);
         Employee updatedEmployee = employeeDAO.getEmployeeID(employeev2.getEmployeeId());
-        Assertions.assertEquals("Test", updatedEmployee.getName());
+        Assertions.assertEquals("Test2", updatedEmployee.getName());
     }
 
     @Test

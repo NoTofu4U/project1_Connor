@@ -25,8 +25,9 @@ public class EmployeeDAOLocal implements EmployeeDAO{
         return employeeTable.get(employeeId);
     }
 
-    @Override
+    @Override // this should return everything from the DB
     public List<Employee> getAllEmployees() {
+
         return null;
     }
 
