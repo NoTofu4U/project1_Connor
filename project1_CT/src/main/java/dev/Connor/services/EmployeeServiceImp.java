@@ -40,7 +40,8 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     public List<Employee> getAllEmployees() {
-        return this.employeeDAO.getAllEmployees();
+
+         return this.employeeDAO.getAllEmployees();
     }
 
     @Override
@@ -56,6 +57,7 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     public boolean deleteEmployeeById(int employeeId) {
-        return this.employeeDAO.deleteEmployeeById(employeeId);
+
+         return this.employeeDAO.deleteEmployeeById(employeeId);
     }
 }

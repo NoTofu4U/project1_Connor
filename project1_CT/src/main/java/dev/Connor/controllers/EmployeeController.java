@@ -22,17 +22,13 @@ public class EmployeeController {
         // fromJson this is taking something from Json to Java
         Employee employee = gson.fromJson(json, Employee.class);
         Employee registeredEmployee = Driver.employeeService.createEmployee(employee);
-        // turning the employee back into json
+        // turning the employee object back into json
         String employeeJson = gson.toJson(registeredEmployee);
         ctx.status(201);
         ctx.result(employeeJson);
     };
     public Handler getAllEmployee = (ctx) -> {
-        // WIP
-        // int id = Integer.parseInt(ctx.pathParam("id"));
         List<Employee> employeeList = Driver.employeeService.getAllEmployees();
-        // new ArrayList<Employee>(employeeTable.values());
-        // Employee employee = Driver.employeeService.getAllEmployees();
         Gson gson = new Gson();
         String json = gson.toJson(employeeList);
         ctx.result(json);
