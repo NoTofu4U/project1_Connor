@@ -2,8 +2,6 @@ package dev.Connor.driver;
 
 import dev.Connor.controllers.EmployeeController;
 import dev.Connor.controllers.ReimbursementsController;
-import dev.Connor.repos.EmployeeDAO;
-import dev.Connor.repos.EmployeeDAOLocal;
 import dev.Connor.repos.EmployeeDAOPostgres;
 import dev.Connor.repos.ReimbursementDAOLocal;
 import dev.Connor.services.EmployeeService;
@@ -20,31 +18,31 @@ public class Driver {
     public static void main(String[] args) {
         Javalin app = Javalin.create();
 
-        // Employee app
+        // Employee app ------------------------------------------------------------------------------------------------
         EmployeeController employeeController = new EmployeeController();
 
-        app.post("/employee", employeeController.createEmployeeHandler);
+        app.post("/employee", employeeController.createEmployeeHandler); // manager
 
         //can't do the get, put, or delete first bc we don't have a db to reference
         app.get("/employee/{id}", employeeController.getEmployeeByIdHandler);
 
         // the path here may need to be updated if changed in Postman
-        app.get("/employee/", employeeController.getAllEmployee);
+        app.get("/employee/", employeeController.getAllEmployee); // manager
 
-        app.put("/employee/{id}", employeeController.updateEmployeeHandler);
+        app.put("/employee/{id}", employeeController.updateEmployeeHandler); // manager
 
-        app.delete("/employee/{id}", employeeController.deleteEmployeeHandler);
+        app.delete("/employee/{id}", employeeController.deleteEmployeeHandler); // manager
 
-        // Reimbursement app
+        // Reimbursement app -------------------------------------------------------------------------------------------
         ReimbursementsController reimbursementsController = new ReimbursementsController();
 
         app.post("/reimbursement", reimbursementsController.createReimbursementHandler);
 
         app.get("/reimbursement/{id}", reimbursementsController.getReimbursementByIdHandler);
 
-        app.get("/reimbursement/", reimbursementsController.getAllReimbursementHandler);
+        app.get("/reimbursement/", reimbursementsController.getAllReimbursementHandler); // manager
 
-        app.put("/reimbursement/{id}", reimbursementsController.updateReimbursementHandler);
+        app.put("/reimbursement/{id}", reimbursementsController.updateReimbursementHandler); // manager
 
         app.start();
     }
@@ -53,3 +51,7 @@ public class Driver {
 
 // This is some stretch goals I may want to implement
 // see about adding different types of reimbursement
+
+
+// double check that this is the correct path to the main class later
+//<mainClass>dev.Connor.driver.Driver</mainClass>
