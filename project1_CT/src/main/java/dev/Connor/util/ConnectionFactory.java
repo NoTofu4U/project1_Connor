@@ -7,14 +7,12 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
     public static Connection getConnection() {
-        String url = System.getenv("POSTGRES-SQL-DB");
-        String username = System.getenv("DB_USERNAME");
-        String password = System.getenv("PASSWORD");
-
         try {
-            return DriverManager.getConnection(url, username, password);
+            Connection connection = DriverManager.getConnection(System.getenv("POSTGRES_SQL_DB"));
+            return connection;
         } catch (SQLException e) {
-            throw new RuntimeException();
+            e.printStackTrace();
+            return null;
         }
     }
 }
@@ -38,14 +36,18 @@ public class ConnectionFactory {
  *     }
  *
  *         slightly less bad way
- *      try {
- *             Connection connection = DriverManager.getConnection(System.getenv("POSTGRES_SQL_DB"));
- *             return connection;
- *         } catch (SQLException e) {
- *             e.printStackTrace();
- *             return null;
- *         }
  *
+ *          public static Connection getConnection() {
+ *         String url = System.getenv("POSTGRES-SQL-DB");
+ *         String username = System.getenv("DB_USERNAME");
+ *         String password = System.getenv("PASSWORD");
+ *
+ *         try {
+ *             return DriverManager.getConnection(url, username, password);
+ *         } catch (SQLException e) {
+ *             throw new RuntimeException();
+ *         }
+ *     }
  *
  *     jdbc:postgresql://localhost:5432/postgres?user=postgres&password=password&currentSchema=projectonect
  */
