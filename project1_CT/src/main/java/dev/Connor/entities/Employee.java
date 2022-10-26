@@ -70,8 +70,4 @@ public class Employee {
         isManager = manager;
     }
 
-
-
-
-
 }

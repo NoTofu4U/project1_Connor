@@ -2,6 +2,7 @@ package dev.Connor.repos;
 
 import dev.Connor.entities.Employee;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 public class EmployeeDAOLocal implements EmployeeDAO{
 
     private Map<Integer, Employee> employeeTable = new HashMap();
+    private List<Employee> employeeList = new ArrayList<Employee>(employeeTable.values());
     private int idCount = 1;
 
     @Override // these have to be Overriden bc it's from an interface bc this class isn't abstract
@@ -17,22 +19,25 @@ public class EmployeeDAOLocal implements EmployeeDAO{
         idCount++;
         employeeTable.put(employee.getEmployeeId(), employee);
         System.out.println(employeeTable.values());
+        employeeList.add(employee);
         return employee;
     }
 
     @Override
     public Employee getEmployeeID(int employeeId) {
+
         return employeeTable.get(employeeId);
     }
 
     @Override // this should return everything from the DB
     public List<Employee> getAllEmployees() {
 
-        return null;
+        return employeeList;
     }
 
     @Override
     public Employee updatedEmployee(Employee employee) {
+
         return employeeTable.put(employee.getEmployeeId(), employee);
     }
 

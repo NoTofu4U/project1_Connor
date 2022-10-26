@@ -1,8 +1,9 @@
-package dev.Connor.daotests;
+package dev.Connor.daotests.daotests;
 
 import dev.Connor.entities.Employee;
 import dev.Connor.repos.EmployeeDAO;
 import dev.Connor.repos.EmployeeDAOLocal;
+import dev.Connor.repos.EmployeeDAOPostgres;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EmployeeDAOTests {
 
-    static EmployeeDAO employeeDAO = new EmployeeDAOLocal(); // when we don't need to use the local, we can just change the name
+    static EmployeeDAO employeeDAO = new EmployeeDAOPostgres(); // when we don't need to use the local, we can just change the name
 
     @Test
     @Order(1)
